@@ -2,5 +2,24 @@
 
 {%block content%}
 <h>about page<h/>
+
+    <h3>
+        {{my_text|upper}}
+    </h3>
     <p>This is a template</p>
+    {{my_html|safe}}
+    <p>
+        {{my_text}}, {{my_number}} , {{my_list}}
+    </p>
+
+{% for sub_list in my_list %}
+    {% if sub_list == 2342 %}
+        <li> {{forloop.counter}} - {{sub_list| add:1000}} </li>
+    {% elif sub_list == "abc" %}
+    <li> {{forloop.counter}} - this is not the thing I want  </li>
+    {% else %}
+        <li> {{forloop.counter}} - {{sub_list}} </li>
+    {% endif %}
+{% endfor %}
+
 {%endblock%}
